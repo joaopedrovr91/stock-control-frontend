@@ -1,5 +1,7 @@
-<div class="flex flex-col flex-auto items-center justify-center h-full p-6 sm:p-10">
-    <div class="flex flex-col p-10 drop-shadow-md bg-white w-96 h-480 rounded-md bg-white">
+<div class="flex flex-col flex-auto items-center justify-center h-full  p-6 sm:p-10 bg-cover" style="background-image: url('https://media.istockphoto.com/id/1130474855/pt/foto/grinding-the-man-polishes-metal-rods.jpg?s=612x612&w=0&k=20&c=8ivcxJnCMchQQvsu_0SvfbuRaY7DAbL4AFdXHfqsMJ4=');">
+    <div class="flex flex-col p-10 drop-shadow-md bg-white w-96 rounded-md" >
+        <h1 class="text-center mb-8 font-bold text-6xl">Kennedy <h1 class="text-amber-900"> Serralheria</h1></h1>
+        <h3 class="text-left mb-4 text-lg" >Digite seu usuário e senha para prosseguir</h3>
         <mat-form-field class="w-full p-0">
             <mat-label>Nome de Usuário</mat-label>
             <input
@@ -15,6 +17,7 @@
                 Password is required
             </mat-error>
         </mat-form-field>
+        <div class="mt-4">
         <mat-form-field [style.height.px]="25" class="w-full p-0">
             <mat-label>Senha</mat-label>
             <input
@@ -41,5 +44,7 @@
                 Password is required
             </mat-error>
         </mat-form-field>
+        </div>
+        <button type="button" class="text-xl text-white font-semibold mt-20 px-18 py-3 rounded transition ease-in-out delay-150 bg-amber-500 hover:-translate-y-1 hover:scale-100 hover:bg-amber-700 duration-300">Entrar</button>
     </div>
 </div>
