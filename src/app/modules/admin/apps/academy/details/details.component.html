@@ -53,32 +53,14 @@
                             [class.current-step]="step.order === currentStep">
                             <ng-container *ngIf="!last">
                                 <div
-                                    class="absolute top-6 left-4 w-0.5 h-full -ml-px"
-                                    [ngClass]="{'bg-primary': step.order < currentStep,
-                                                'bg-gray-300 dark:bg-gray-600': step.order >= currentStep}"></div>
+                                    class="absolute top-6 left-4 w-0.5 h-full -ml-px bg-primary"></div>
                             </ng-container>
                             <div
                                 class="relative flex items-start cursor-pointer"
                                 (click)="goToStep(step.order)">
                                 <div
-                                    class="flex flex-0 items-center justify-center w-8 h-8 rounded-full ring-2 ring-inset bg-card dark:bg-default"
-                                    [ngClass]="{'bg-primary dark:bg-primary text-on-primary group-hover:bg-primary-800 ring-transparent': step.order < currentStep,
-                                                'ring-primary': step.order === currentStep,
-                                                'ring-gray-300 dark:ring-gray-600 group-hover:ring-gray-400': step.order > currentStep}">
-                                    <!-- Check icon, show if the step is completed -->
-                                    <ng-container *ngIf="step.order < currentStep">
-                                        <mat-icon
-                                            class="icon-size-5 text-current"
-                                            [svgIcon]="'heroicons_solid:check'"></mat-icon>
-                                    </ng-container>
-                                    <!-- Step order, show if the step is the current step -->
-                                    <ng-container *ngIf="step.order === currentStep">
-                                        <div class="text-md font-semibold text-primary dark:text-primary-500">{{step.order + 1}}</div>
-                                    </ng-container>
-                                    <!-- Step order, show if the step is not completed -->
-                                    <ng-container *ngIf="step.order > currentStep">
-                                        <div class="text-md font-semibold text-hint group-hover:text-secondary">{{step.order + 1}}</div>
-                                    </ng-container>
+                                    class="flex flex-0 items-center justify-center w-8 h-8 rounded-full ring-2 ring-inset bg-card dark:bg-default ring-primary dark:ring-gray-600 group-hover:ring-gray-400">
+                                    <div class="text-md font-semibold text-primary dark:text-primary-500">{{step.order + 1}}</div>
                                 </div>
                                 <div class="ml-4">
                                     <div class="font-medium leading-4">{{step.title}}</div>
@@ -111,58 +93,38 @@
                 class="hidden lg:block flex-0 h-0.5 w-full"
                 [value]="100 * (currentStep + 1) / course.totalSteps"></mat-progress-bar>
 
-            <!-- Main -->
-            <div
-                class="flex-auto overflow-y-auto"
-                cdkScrollable>
-
-                <!-- Steps -->
-                <mat-tab-group
-                    class="fuse-mat-no-header"
-                    [animationDuration]="'200'"
-                    #courseSteps>
-                    <ng-container *ngFor="let step of course.steps; trackBy: trackByFn">
-                        <mat-tab>
-                            <ng-template matTabContent>
-                                <div
-                                    class="prose prose-sm max-w-3xl mx-auto sm:my-2 lg:mt-4 p-6 sm:p-10 sm:py-12 rounded-2xl shadow overflow-hidden bg-card"
-                                    [innerHTML]="step.content"></div>
-                            </ng-template>
-                        </mat-tab>
-                    </ng-container>
-                </mat-tab-group>
-
-                <!-- Navigation - Desktop -->
-                <div class="z-10 sticky hidden lg:flex bottom-4 p-4">
-                    <div class="flex items-center justify-center mx-auto p-2 rounded-full shadow-lg bg-primary">
-                        <button
-                            class="flex-0"
-                            mat-flat-button
-                            [color]="'primary'"
-                            (click)="goToPreviousStep()">
-                            <mat-icon
-                                class="mr-2"
-                                [svgIcon]="'heroicons_outline:arrow-narrow-left'"></mat-icon>
-                            <span class="mr-1">Prev</span>
-                        </button>
-                        <div class="flex items-center justify-center mx-2.5 font-medium leading-5 text-on-primary">
-                            <span>{{currentStep + 1}}</span>
-                            <span class="mx-0.5 text-hint">/</span>
-                            <span>{{course.totalSteps}}</span>
-                        </div>
-                        <button
-                            class="flex-0"
-                            mat-flat-button
-                            [color]="'primary'"
-                            (click)="goToNextStep()">
-                            <span class="ml-1">Next</span>
-                            <mat-icon
-                                class="ml-2"
-                                [svgIcon]="'heroicons_outline:arrow-narrow-right'"></mat-icon>
-                        </button>
+            <div class="flex justify-between">
+                <div class="flex w-full rounded-md shadow-md mx-4 my-6 flex-col justify-center px-4 py-6 md:px-8 bg-card dark:bg-gray-700">
+                    <div class="flex w-full">
+                        <mat-form-field
+                            class="flex-auto mx-2">
+                            <mat-label>Descrição</mat-label>
+                            <input
+                                type="text"
+                                matInput
+                                [placeholder]="'This is a placeholder'">
+                        </mat-form-field>
                     </div>
+                    <div class="flex">
+                        <mat-form-field
+                            class="w-48 mx-2">
+                            <mat-label>Quantidade</mat-label>
+                            <input
+                                type="text"
+                                matInput
+                                [placeholder]="'This is a placeholder'">
+                        </mat-form-field>
+                        <mat-form-field
+                            class="flex-auto mx-2">
+                            <mat-label>Quantidade</mat-label>
+                            <input
+                                type="text"
+                                matInput
+                                [placeholder]="'This is a placeholder'">
+                        </mat-form-field>
+                    </div>
+                    <mat-divider></mat-divider>
                 </div>
-
             </div>
 
             <!-- Progress & Navigation - Mobile -->

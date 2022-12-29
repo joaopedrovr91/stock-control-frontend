@@ -16,6 +16,7 @@ import { AcademyComponent } from 'app/modules/admin/apps/academy/academy.compone
 import { AcademyDetailsComponent } from 'app/modules/admin/apps/academy/details/details.component';
 import { AcademyListComponent } from 'app/modules/admin/apps/academy/list/list.component';
 import { MatTabsModule } from '@angular/material/tabs';
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
     declarations: [
@@ -23,7 +24,7 @@ import { MatTabsModule } from '@angular/material/tabs';
         AcademyDetailsComponent,
         AcademyListComponent
     ],
-    imports     : [
+    imports: [
         RouterModule.forChild(academyRoutes),
         MatButtonModule,
         MatFormFieldModule,
@@ -36,7 +37,8 @@ import { MatTabsModule } from '@angular/material/tabs';
         MatTooltipModule,
         FuseFindByKeyPipeModule,
         SharedModule,
-        MatTabsModule
+        MatTabsModule,
+        MatDividerModule
     ]
 })
 export class AcademyModule
